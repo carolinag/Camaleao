@@ -14,9 +14,10 @@ namespace Camaleao
         static void Main(string[] args)
         {
             Image camaleao = Image.FromFile(Path.Combine (AbsolutePath, "../../Images/camaleao.bmp"));
-            Image camaleao2 = (Image)camaleao.Clone();
+            //Image camaleao2 = (Image)camaleao.Clone();
+            //camaleao2.Save(Path.Combine (AbsolutePath,"../../Images/camaleao2.bmp"));
 
-            camaleao2.Save(Path.Combine (AbsolutePath,"../../Images/camaleao2.bmp"));
+
 
         }
     }
