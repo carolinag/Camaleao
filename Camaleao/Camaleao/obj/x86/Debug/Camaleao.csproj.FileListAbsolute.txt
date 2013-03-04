@@ -1,0 +1,5 @@
+C:\Users\Carol\Projetos\PFC\Camaleao\Camaleao\Camaleao\bin\Debug\Camaleao.exe
+C:\Users\Carol\Projetos\PFC\Camaleao\Camaleao\Camaleao\bin\Debug\Camaleao.pdb
+C:\Users\Carol\Projetos\PFC\Camaleao\Camaleao\Camaleao\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\Carol\Projetos\PFC\Camaleao\Camaleao\Camaleao\obj\x86\Debug\Camaleao.exe
+C:\Users\Carol\Projetos\PFC\Camaleao\Camaleao\Camaleao\obj\x86\Debug\Camaleao.pdb
