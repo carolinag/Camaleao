@@ -12,6 +12,10 @@ namespace Camaleao
     {
         public static Cypher cypher;
         public static Decypher decypher;
+
+        public static NaorShamirCypher NScypher;
+        public static NaorShamirDecypher NSDecypher;
+
         
         public static string AbsolutePath =  Path.GetDirectoryName (Assembly.GetExecutingAssembly().Location);
         static void Main(string[] args)
@@ -27,11 +31,12 @@ namespace Camaleao
             Bitmap retrivedMessage = decypher.GetMessage();
             retrivedMessage.Save(Path.Combine(AbsolutePath, "../../Images/retrivedMessage.bmp"));
 
-            //Image camaleao2 = (Image)camaleao.Clone();
-            //camaleao2.Save(Path.Combine (AbsolutePath,"../../Images/camaleao2.bmp"));
+            NScypher = new NaorShamirCypher(camaleao);
+            NScypher.Share1.Save(Path.Combine(AbsolutePath, "../../Images/NSshare1.bmp"));
+            NScypher.Share2.Save(Path.Combine(AbsolutePath, "../../Images/NSshare2.bmp"));
 
-
-
+            NSDecypher = new NaorShamirDecypher(NScypher.Share1, NScypher.Share2);
+            NSDecypher.RetrievedImage.Save(Path.Combine(AbsolutePath, "../../Images/NSretrievedImage.bmp"));
         }
     }
 }

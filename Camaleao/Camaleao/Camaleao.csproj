@@ -46,6 +46,8 @@
   <ItemGroup>
     <Compile Include="Cypher.cs" />
     <Compile Include="Decypher.cs" />
+    <Compile Include="NaorShamirCypher.cs" />
+    <Compile Include="NaorShamirDecypher.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
