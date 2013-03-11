@@ -31,14 +31,18 @@ namespace Camaleao
                     Color imagePixel = Image.GetPixel(x, y);
                     int randomInt = Rand.Next() % 2;
 
-                    if (imagePixel.Name.StartsWith("ff8") ||
-                           imagePixel.Name.StartsWith("ff9") ||
-                           imagePixel.Name.StartsWith("ffa") ||
-                           imagePixel.Name.StartsWith("ffb") ||
-                           imagePixel.Name.StartsWith("ffc") ||
-                           imagePixel.Name.StartsWith("ffd") ||
-                           imagePixel.Name.StartsWith("ffe") ||
-                           imagePixel.Name.StartsWith("fff"))//Branco
+                    //if (imagePixel.Name.StartsWith("ff8") ||
+                    //       imagePixel.Name.StartsWith("ff9") ||
+                    //       imagePixel.Name.StartsWith("ffa") ||
+                    //       imagePixel.Name.StartsWith("ffb") ||
+                    //       imagePixel.Name.StartsWith("ffc") ||
+                    //       imagePixel.Name.StartsWith("ffd") ||
+                    //       imagePixel.Name.StartsWith("ffe") ||
+                    //       imagePixel.Name.StartsWith("fff"))//Branco
+
+                    //valido apenas para imagens preto e branco
+
+                    if(imagePixel.R == 255)// Branco
                     {
                         if (randomInt == 0)
                         {

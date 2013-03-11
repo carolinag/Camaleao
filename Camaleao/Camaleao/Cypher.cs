@@ -9,17 +9,17 @@ namespace Camaleao
     public class Cypher
     {
         private Bitmap Message {get; set;}
-        private Bitmap Camaleao { get; set; }
+        private Bitmap OriginalImage { get; set; }
         private Bitmap Share { get; set; }
        
         private int PrivateKey { get; set; }
         private Random Rand { get; set; }
         private List<int> R { get; set; }
 
-        public Cypher(Bitmap message, Bitmap camaleao, int privateKey)
+        public Cypher(Bitmap message, Bitmap originalImage, int privateKey)
         {
-            this.Message = message; 
-            this.Camaleao = camaleao;
+            this.Message = message;
+            this.OriginalImage = originalImage;
             this.Share = new Bitmap(Message.Width * 2, Message.Height);
 
             this.PrivateKey = privateKey;
@@ -37,22 +37,16 @@ namespace Camaleao
                 {
                     Color msgPixel = Message.GetPixel(x, y);
                     
-                    int xi= (int)R[y*Message.Width + x]/Camaleao.Width;
-                    int yi= R[y*Message.Width + x]%Camaleao.Height;
-                    Color imagePixel = Camaleao.GetPixel(xi, yi);
+                    int yi= (int)R[y*Message.Width + x]/OriginalImage.Width;
+                    int xi= R[y*Message.Width + x]%OriginalImage.Width;
+
+                    Color imagePixel = OriginalImage.GetPixel(xi, yi);
             
 
-                    if (msgPixel.Equals(Color.FromArgb(255,0,0,0)))
+                    if (msgPixel.Equals(Color.FromArgb(255,0,0,0))) //pixel da mensagem é preto
                     {
-                        if (imagePixel.Name.StartsWith("ff8") || 
-                            imagePixel.Name.StartsWith("ff9") || 
-                            imagePixel.Name.StartsWith("ffa") ||
-                            imagePixel.Name.StartsWith("ffb") ||
-                            imagePixel.Name.StartsWith("ffc") ||
-                            imagePixel.Name.StartsWith("ffd") ||
-                            imagePixel.Name.StartsWith("ffe") ||
-                            imagePixel.Name.StartsWith("fff") )
-
+                        //valido para imagens em tons de cinza (R = G = B)
+                        if(imagePixel.R >= 80) //se o bit mais a esquerda da cor do pixel selecionado = 1
                         {
                             Share.SetPixel(2 * x, y, Color.White);
                             Share.SetPixel(2 * x + 1, y, Color.Black);
@@ -63,16 +57,9 @@ namespace Camaleao
                             Share.SetPixel(2 * x + 1, y, Color.White);
                         }
                     }
-                    else if (msgPixel.Equals(Color.FromArgb(255,255,255,255)))
+                    else if (msgPixel.Equals(Color.FromArgb(255,255,255,255))) //pixel da mensagem é branco
                     {
-                        if (imagePixel.Name.StartsWith("ff8") ||
-                           imagePixel.Name.StartsWith("ff9") ||
-                           imagePixel.Name.StartsWith("ffa") ||
-                           imagePixel.Name.StartsWith("ffb") ||
-                           imagePixel.Name.StartsWith("ffc") ||
-                           imagePixel.Name.StartsWith("ffd") ||
-                           imagePixel.Name.StartsWith("ffe") ||
-                           imagePixel.Name.StartsWith("fff"))
+                        if (imagePixel.R >= 80) //se o bit mais a esquerda da cor do pixel selecionado = 1
                         {
                             Share.SetPixel(2 * x, y, Color.Black);
                             Share.SetPixel(2 * x + 1, y, Color.White);
@@ -93,7 +80,7 @@ namespace Camaleao
         {
             for (int i = 0; i < Message.Width * Message.Height; i++)
             {
-                R.Add(Rand.Next(Camaleao.Width * Camaleao.Height));   
+                R.Add(Rand.Next(OriginalImage.Width * OriginalImage.Height));   
             }
         }
 

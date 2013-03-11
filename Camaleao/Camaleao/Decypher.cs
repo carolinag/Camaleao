@@ -8,7 +8,7 @@ namespace Camaleao
 {
     public class Decypher
     {
-        private Bitmap Camaleao { get; set; }
+        private Bitmap OriginalImage { get; set; }
         private Bitmap Share { get; set; }
         private Bitmap Message { get; set; }
         private int PrivateKey { get; set; }
@@ -16,14 +16,13 @@ namespace Camaleao
         private List<int> R { get; set; }
 
 
-        public Decypher(Bitmap camaleao, Bitmap share, int privateKey)
+        public Decypher(Bitmap originalImage, Bitmap share, int privateKey)
         {
-            this.Camaleao = camaleao;
+            this.OriginalImage = originalImage;
             this.Share = share;
             this.Message = new Bitmap(Share.Width/2, Share.Height);
 
             this.PrivateKey = privateKey;
-            this.Rand = new Random(PrivateKey);
             this.Rand = new Random(PrivateKey);
             R = new List<int>();
                       
@@ -43,9 +42,9 @@ namespace Camaleao
                     Color f1;
                     Color f2;
 
-                    int xi = (int)R[y * Message.Width + x] / Camaleao.Width;
-                    int yi = R[y * Message.Width + x] % Camaleao.Height;
-                    Color imagePixel = Camaleao.GetPixel(xi, yi);
+                    int yi = (int)R[y * Message.Width + x] / OriginalImage.Width;
+                    int xi = R[y * Message.Width + x] % OriginalImage.Width;
+                    Color imagePixel = OriginalImage.GetPixel(xi, yi);
 
 
                     if (imagePixel.Name.StartsWith("ff8") ||
@@ -84,7 +83,7 @@ namespace Camaleao
         {
             for (int i = 0; i < Message.Width * Message.Height; i++)
             {
-                R.Add(Rand.Next(Camaleao.Width * Camaleao.Height));
+                R.Add(Rand.Next(OriginalImage.Width * OriginalImage.Height));
             }
         }
 

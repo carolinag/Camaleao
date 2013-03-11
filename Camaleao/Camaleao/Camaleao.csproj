@@ -52,7 +52,24 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Images\baboon.bmp" />
+    <Content Include="Images\baboon2.bmp" />
+    <Content Include="Images\bigMessage.bmp" />
     <Content Include="Images\camaleao.bmp" />
+    <Content Include="Images\chameleon2.bmp" />
+    <Content Include="Images\Chameleon3.bmp" />
+    <Content Include="Images\message.bmp" />
+    <Content Include="Images\message2.bmp" />
+    <Content Include="Images\message3.bmp" />
+    <Content Include="Images\messageNarrow.bmp" />
+    <Content Include="Images\NSretrievedImage.bmp" />
+    <Content Include="Images\NSshare1.bmp" />
+    <Content Include="Images\NSshare2.bmp" />
+    <Content Include="Images\retrivedMessage.bmp" />
+    <Content Include="Images\share.bmp" />
+    <Content Include="Images\shareBigChameleon2.bmp" />
+    <Content Include="Images\shareNarrowChameleon2.bmp" />
+    <Content Include="Images\teste.bmp" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -28,9 +28,10 @@ namespace Camaleao
                 {
                     Color pixel1 = Share1.GetPixel(x,y);
                     Color pixel2 = Share2.GetPixel(x,y);
-                    int R = (pixel1.R + pixel2.R) > 255 ? 255 : (pixel1.R + pixel2.R);
-                    int G = (pixel1.G + pixel2.G) > 255 ? 255 : (pixel1.G + pixel2.G);
-                    int B = (pixel1.B + pixel2.B) > 255 ? 255 : (pixel1.B + pixel2.G);
+
+                    int R = (pixel1.R + pixel2.R) == 255 ? 0 : ((pixel1.R + pixel2.R) > 255 ? 255 : (pixel1.R + pixel2.R));
+                    int G = (pixel1.G + pixel2.G) == 255 ? 0 : ((pixel1.G + pixel2.G) > 255 ? 255 : (pixel1.G + pixel2.G));
+                    int B = (pixel1.B + pixel2.B) == 255 ? 0 : ((pixel1.B + pixel2.B) > 255 ? 255 : (pixel1.B + pixel2.B));
 
                     RetrievedImage.SetPixel(x, y, Color.FromArgb(255, R, G, B));
                 }
