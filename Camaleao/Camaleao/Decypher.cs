@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Drawing;
+using System.IO;
+using System.Reflection;
 
 namespace Camaleao
 {
@@ -30,7 +32,9 @@ namespace Camaleao
 
         public Bitmap GetMessage()
         {
-            CreatePrivateKey();
+            R = Utils.CreatePrivateKey(Rand, OriginalImage.Width * OriginalImage.Height, Message.Width * Message.Height);
+
+            TransformShareBack();
 
             for (int y = 0; y < Message.Height; y++)
             {
@@ -77,14 +81,46 @@ namespace Camaleao
                 }
             }
             return Message;
+           // return Share;
         }
 
-        private void CreatePrivateKey()
+        
+
+        private void TransformShareBack()
         {
-            for (int i = 0; i < Message.Width * Message.Height; i++)
+            Share = Utils.TransposeImage(Share);
+            PermuteColumnsBack();
+            Share = Utils.TransposeImage(Share);
+        }
+
+
+        private void PermuteColumnsBack()
+        {
+            Random random = new Random(PrivateKey);
+            List<int> r = Utils.CreatePrivateKey(random, Share.Width, 2*Share.Width);
+
+            List<int> rInverso = new List<int>();
+
+            for (int a = 1; a <= r.Count; a++)
             {
-                R.Add(Rand.Next(OriginalImage.Width * OriginalImage.Height));
+                rInverso.Add(r[r.Count - a]);
             }
+
+
+            for (int i = 0; i < Share.Width; i++)
+            {
+                int column1 = rInverso[2*i];
+                int column2 = rInverso[2*i+1];
+                
+                for (int j = 0; j < Share.Height; j++)
+                {
+                    Color Aux = Share.GetPixel(column1, j);
+                    Share.SetPixel(column1, j, Share.GetPixel(column2, j));
+                    Share.SetPixel(column2, j, Aux);
+                }
+
+            }
+           
         }
 
     }

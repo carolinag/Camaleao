@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Drawing;
+using System.IO;
+using System.Reflection;
 
 namespace Camaleao
 {
@@ -29,7 +31,7 @@ namespace Camaleao
 
         public Bitmap GenerateShare()
         {
-            CreatePrivateKey();
+            R = Utils.CreatePrivateKey(Rand, OriginalImage.Width * OriginalImage.Height, Message.Width * Message.Height);
 
             for (int y = 0; y < Message.Height; y++)
             {
@@ -73,14 +75,36 @@ namespace Camaleao
 
                 }
             }
+            TransformShare();
+            
+
             return Share;
         }
 
-        private void CreatePrivateKey()
+        private void TransformShare()
         {
-            for (int i = 0; i < Message.Width * Message.Height; i++)
+            Share = Utils.TransposeImage(Share);
+            PermuteColumns();
+            Share = Utils.TransposeImage(Share);
+        }
+
+
+        private void PermuteColumns()
+        {
+            Random random = new Random(PrivateKey);
+
+
+            for (int i = 0; i < Share.Width; i++)
             {
-                R.Add(Rand.Next(OriginalImage.Width * OriginalImage.Height));   
+                int column1 = random.Next(Share.Width);
+                int column2 = random.Next(Share.Width);
+                for (int j = 0; j < Share.Height; j++)
+                {
+                    Color Aux = Share.GetPixel(column1, j);
+                    Share.SetPixel(column1, j, Share.GetPixel(column2, j));
+                    Share.SetPixel(column2, j, Aux);
+                }
+
             }
         }
 
