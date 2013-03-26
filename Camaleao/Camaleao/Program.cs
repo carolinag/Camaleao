@@ -21,13 +21,12 @@ namespace Camaleao
 
         static void Main(string[] args)
         {
-            Bitmap originalImage = new Bitmap(Path.Combine (AbsolutePath, "../../Images/chameleon2.bmp"));
+            Bitmap originalImage = new Bitmap(Path.Combine (AbsolutePath, "../../Images/message.bmp"));
             Bitmap message = new Bitmap(Path.Combine(AbsolutePath, "../../Images/messageNarrow.bmp"));
 
             cypher = new Cypher(message, originalImage, 7);
             Bitmap share = cypher.GenerateShare();
             share.Save(Path.Combine(AbsolutePath, "../../Images/shareNarrowChameleon2.bmp"));
-
 
             Bitmap receivedShare = new Bitmap(Path.Combine(AbsolutePath, "../../Images/shareNarrowChameleon2.bmp"));
             decypher = new Decypher(originalImage, share, 7);

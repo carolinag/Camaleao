@@ -21,6 +21,7 @@ namespace Camaleao
             Rand = new Random();
             GenerateShares();
         }
+  
 
         private void GenerateShares()
         {
@@ -31,43 +32,32 @@ namespace Camaleao
                     Color imagePixel = Image.GetPixel(x, y);
                     int randomInt = Rand.Next() % 2;
 
-                    //if (imagePixel.Name.StartsWith("ff8") ||
-                    //       imagePixel.Name.StartsWith("ff9") ||
-                    //       imagePixel.Name.StartsWith("ffa") ||
-                    //       imagePixel.Name.StartsWith("ffb") ||
-                    //       imagePixel.Name.StartsWith("ffc") ||
-                    //       imagePixel.Name.StartsWith("ffd") ||
-                    //       imagePixel.Name.StartsWith("ffe") ||
-                    //       imagePixel.Name.StartsWith("fff"))//Branco
-
-                    //valido apenas para imagens preto e branco
-
                     if(imagePixel.R == 255)// Branco
                     {
                         if (randomInt == 0)
                         {
                             Share1.SetPixel(2*x, 2*y, Color.Black);
-                            Share1.SetPixel(2*x+1, 2*y, Color.White);
-                            Share1.SetPixel(2*x, 2*y+1, Color.White);
+                            Share1.SetPixel(2 * x + 1, 2 * y, Color.Transparent);
+                            Share1.SetPixel(2 * x, 2 * y + 1, Color.Transparent);
                             Share1.SetPixel(2*x+1, 2*y+1, Color.Black);
 
                             Share2.SetPixel(2*x, 2*y, Color.Black);
-                            Share2.SetPixel(2*x+1, 2*y, Color.White);
-                            Share2.SetPixel(2*x, 2*y+1, Color.White);
+                            Share2.SetPixel(2 * x + 1, 2 * y, Color.Transparent);
+                            Share2.SetPixel(2 * x, 2 * y + 1, Color.Transparent);
                             Share2.SetPixel(2*x+1, 2*y+1, Color.Black);
 
                         }
                         else 
                         {
-                            Share1.SetPixel(2*x, 2*y, Color.White);
+                            Share1.SetPixel(2 * x, 2 * y, Color.Transparent);
                             Share1.SetPixel(2*x+1, 2*y, Color.Black);
                             Share1.SetPixel(2*x, 2*y+1, Color.Black);
-                            Share1.SetPixel(2*x+1, 2*y+1, Color.White);
+                            Share1.SetPixel(2 * x + 1, 2 * y + 1, Color.Transparent);
 
-                            Share2.SetPixel(2*x, 2*y, Color.White);
+                            Share2.SetPixel(2 * x, 2 * y, Color.Transparent);
                             Share2.SetPixel(2*x+1, 2*y, Color.Black);
                             Share2.SetPixel(2*x, 2*y+1, Color.Black);
-                            Share2.SetPixel(2*x+1, 2*y+1, Color.White);
+                            Share2.SetPixel(2 * x + 1, 2 * y + 1, Color.Transparent);
                         }
 
                     }
@@ -77,26 +67,26 @@ namespace Camaleao
                         if (randomInt == 0)
                         {
                             Share1.SetPixel(2 * x, 2 * y, Color.Black);
-                            Share1.SetPixel(2 * x + 1, 2 * y, Color.White);
-                            Share1.SetPixel(2 * x, 2 * y + 1, Color.White);
+                            Share1.SetPixel(2 * x + 1, 2 * y, Color.Transparent);
+                            Share1.SetPixel(2 * x, 2 * y + 1, Color.Transparent);
                             Share1.SetPixel(2 * x + 1, 2 * y + 1, Color.Black);
 
-                            Share2.SetPixel(2 * x, 2 * y, Color.White);
+                            Share2.SetPixel(2 * x, 2 * y, Color.Transparent);
                             Share2.SetPixel(2 * x + 1, 2 * y, Color.Black);
                             Share2.SetPixel(2 * x, 2 * y + 1, Color.Black);
-                            Share2.SetPixel(2 * x + 1, 2 * y + 1, Color.White);
+                            Share2.SetPixel(2 * x + 1, 2 * y + 1, Color.Transparent);
                         }
                         else
                         {
-                            Share1.SetPixel(2 * x, 2 * y, Color.White);
+                            Share1.SetPixel(2 * x, 2 * y, Color.Transparent);
                             Share1.SetPixel(2 * x + 1, 2 * y, Color.Black);
                             Share1.SetPixel(2 * x, 2 * y + 1, Color.Black);
-                            Share1.SetPixel(2 * x + 1, 2 * y + 1, Color.White);
+                            Share1.SetPixel(2 * x + 1, 2 * y + 1, Color.Transparent);
 
 
                             Share2.SetPixel(2 * x, 2 * y, Color.Black);
-                            Share2.SetPixel(2 * x + 1, 2 * y, Color.White);
-                            Share2.SetPixel(2 * x, 2 * y + 1, Color.White);
+                            Share2.SetPixel(2 * x + 1, 2 * y, Color.Transparent);
+                            Share2.SetPixel(2 * x, 2 * y + 1, Color.Transparent);
                             Share2.SetPixel(2 * x + 1, 2 * y + 1, Color.Black);
                         }
                     }
