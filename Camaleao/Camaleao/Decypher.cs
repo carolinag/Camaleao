@@ -96,7 +96,7 @@ namespace Camaleao
 
         private void PermuteColumnsBack()
         {
-            Random random = new Random(PrivateKey);
+            Random random = new Random((PrivateKey * OriginalImage.Width) % OriginalImage.Height);
             List<int> r = Utils.CreatePrivateKey(random, Share.Width, 2*Share.Width);
 
             List<int> rInverso = new List<int>();

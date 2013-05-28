@@ -91,7 +91,7 @@ namespace Camaleao
 
         private void PermuteColumns()
         {
-            Random random = new Random(PrivateKey);
+            Random random = new Random((PrivateKey*OriginalImage.Width)%OriginalImage.Height);
 
 
             for (int i = 0; i < Share.Width; i++)
